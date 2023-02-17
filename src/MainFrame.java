@@ -63,7 +63,7 @@ public class MainFrame extends JFrame{
 
         btnOK.addActionListener((ActionEvent e) -> {
             String getName = rfFirstName.getText().substring(0, 1).toUpperCase() + rfFirstName.getText().substring(1);
-            String getColor = rfColor.getText();
+            String getColor = rfColor.getText().toLowerCase();
             String getNumber = rfNumber.getText();
             // String finalgetName = getName.substring(0, 1).toUpperCase() + getName.substring(1);
 
