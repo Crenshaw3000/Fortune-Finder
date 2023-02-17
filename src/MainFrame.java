@@ -10,6 +10,7 @@ import javax.swing.WindowConstants;
 
 public class MainFrame extends JFrame{
     final private Font mainFont =  new Font("Arial", Font.BOLD, 20);
+    final private Font nextFont =  new Font("Arial", Font.PLAIN, 16);
     JTextField rfFirstName, rfColor, rfNumber;
 
 
@@ -21,23 +22,23 @@ public class MainFrame extends JFrame{
         JLabel mbFortune;
 
         rfFirstName = new JTextField();
-        rfFirstName.setFont(mainFont);
+        rfFirstName.setFont(nextFont);
 
         rfColor = new JTextField();
-        rfColor.setFont(mainFont);
+        rfColor.setFont(nextFont);
 
         JLabel mbColor= new JLabel("Color");
         mbColor.setFont(mainFont);
 
         rfColor = new JTextField();
-        rfColor.setFont(mainFont);
+        rfColor.setFont(nextFont);
 
 
         JLabel mbNumber = new JLabel("Number");
         mbNumber.setFont(mainFont);
 
         rfNumber = new JTextField();
-        rfNumber.setFont(mainFont);
+        rfNumber.setFont(nextFont);
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(4 , 1, 5, 5));
@@ -61,9 +62,11 @@ public class MainFrame extends JFrame{
 
 
         btnOK.addActionListener((ActionEvent e) -> {
-            String getName = rfFirstName.getText();
+            String getName = rfFirstName.getText().substring(0, 1).toUpperCase() + rfFirstName.getText().substring(1);
             String getColor = rfColor.getText();
             String getNumber = rfNumber.getText();
+            // String finalgetName = getName.substring(0, 1).toUpperCase() + getName.substring(1);
+
             mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
             // mbFortune.setHorizontalTextPosition(JLabel.CENTER);
             // mbFortune.setBounds(50,50,50,50);
@@ -89,9 +92,10 @@ public class MainFrame extends JFrame{
         btnClear.setOpaque(true); 
         btnOK.setOpaque(true);
         btnOK.setBackground(Color.PINK);
-        btnClear.setBackground(Color.CYAN);
+        btnClear.setBackground(Color.pink);
         btnOK.setBorderPainted(false);
         btnClear.setBorderPainted(false);
+        btnOK.setFocusPainted(true);
         buttonsPanel.add(btnOK);
         buttonsPanel.add(btnClear);
 
