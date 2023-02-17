@@ -1,7 +1,5 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -60,12 +58,16 @@ public class MainFrame extends JFrame{
         /********Button Panel ********/
         JButton btnOK = new JButton("Submit");
         btnOK.setFont(mainFont);
+
+
         btnOK.addActionListener((ActionEvent e) -> {
             String getName = rfFirstName.getText();
             String getColor = rfColor.getText();
             String getNumber = rfNumber.getText();
             mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
-            
+            // mbFortune.setHorizontalTextPosition(JLabel.CENTER);
+            // mbFortune.setBounds(50,50,50,50);
+
         });
         
 
@@ -75,20 +77,30 @@ public class MainFrame extends JFrame{
             rfFirstName.setText("");
             rfColor.setText("");
             rfNumber.setText("");
+            mbFortune.setText("");
         });
 
 
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(new GridLayout(1, 2, 5, 5));
-        buttonsPanel.setOpaque(false);
+        // buttonsPanel.setLayout(new GridLayout(1, 2, 5, 5));
+        // buttonsPanel.grid[0][0].setBackground(Color.RED);
+        // buttonsPanel.setOpaque(true);
+        buttonsPanel.setBackground(new Color(100, 125, 255));
+        btnClear.setOpaque(true); 
+        btnOK.setOpaque(true);
+        btnOK.setBackground(Color.PINK);
+        btnClear.setBackground(Color.CYAN);
+        btnOK.setBorderPainted(false);
+        btnClear.setBorderPainted(false);
         buttonsPanel.add(btnOK);
         buttonsPanel.add(btnClear);
 
 
+
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(new Color(128, 125, 255));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        mainPanel.setBackground(new Color(100, 125, 255));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 50, 20));
         mainPanel.add(formPanel, BorderLayout.NORTH);
         mainPanel.add(mbFortune, BorderLayout.CENTER);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
