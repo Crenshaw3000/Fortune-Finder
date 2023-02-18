@@ -1,5 +1,11 @@
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.util.Random;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,6 +46,8 @@ public class MainFrame extends JFrame{
         rfNumber = new JTextField();
         rfNumber.setFont(nextFont);
 
+
+
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(4 , 1, 5, 5));
         formPanel.setOpaque(false);
@@ -64,10 +72,15 @@ public class MainFrame extends JFrame{
         btnOK.addActionListener((ActionEvent e) -> {
             String getName = rfFirstName.getText().substring(0, 1).toUpperCase() + rfFirstName.getText().substring(1);
             String getColor = rfColor.getText().toLowerCase();
-            String getNumber = rfNumber.getText();
-            // String finalgetName = getName.substring(0, 1).toUpperCase() + getName.substring(1);
+            String getNumber = rfNumber.getText().toLowerCase();
+            String[] Fortunes = {getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.", 
+            getName + " do not wear " + getColor + " for  " + getNumber + " days or you will step in dog poop.", 
+            getName + " change your hair to " + getColor + " in  " + getNumber + " days to have luck with your finances."};
+            Random rand = new Random();
+            int r = rand.nextInt(Fortunes.length);
+            mbFortune.setText(Fortunes[r]);
 
-            mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
+            // mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
             // mbFortune.setHorizontalTextPosition(JLabel.CENTER);
             // mbFortune.setBounds(50,50,50,50);
 
