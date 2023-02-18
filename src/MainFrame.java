@@ -17,13 +17,22 @@ import javax.swing.WindowConstants;
 public class MainFrame extends JFrame{
     final private Font mainFont =  new Font("Arial", Font.BOLD, 20);
     final private Font nextFont =  new Font("Arial", Font.PLAIN, 16);
+    final private Font lastFont =  new Font("Arial", Font.BOLD, 16);
+
     JTextField rfFirstName, rfColor, rfNumber;
 
 
 
     public void initialize () {
         /**********Form Panel*******/
-        JLabel mbFirstName = new JLabel("Name");
+        JLabel mbDirections = new JLabel("Enter the your information the fields below for a horoscope.");
+        mbDirections.setFont(mainFont);
+        mbDirections.setVerticalTextPosition(JLabel.TOP);
+        JLabel blank1 = new JLabel();
+        // JLabel blank2 = new JLabel();
+
+
+        JLabel mbFirstName = new JLabel("First Name:");
         mbFirstName.setFont(mainFont);
         JLabel mbFortune;
 
@@ -33,14 +42,14 @@ public class MainFrame extends JFrame{
         rfColor = new JTextField();
         rfColor.setFont(nextFont);
 
-        JLabel mbColor= new JLabel("Color");
+        JLabel mbColor= new JLabel("Pick a Color:");
         mbColor.setFont(mainFont);
 
         rfColor = new JTextField();
         rfColor.setFont(nextFont);
 
 
-        JLabel mbNumber = new JLabel("Number");
+        JLabel mbNumber = new JLabel("Pick a Number:");
         mbNumber.setFont(mainFont);
 
         rfNumber = new JTextField();
@@ -49,8 +58,10 @@ public class MainFrame extends JFrame{
 
 
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(4 , 1, 5, 5));
+        formPanel.setLayout(new GridLayout(6 , 1, 5, 5));
         formPanel.setOpaque(false);
+        formPanel.add(mbDirections);
+        formPanel.add(blank1);
         formPanel.add(mbFirstName);
         formPanel.add(rfFirstName);
         formPanel.add(mbColor);
@@ -61,7 +72,7 @@ public class MainFrame extends JFrame{
 
         /*******Title Label **********/
         mbFortune = new JLabel();
-        mbFortune.setFont(mainFont);
+        mbFortune.setFont(lastFont);
 
 
         /********Button Panel ********/
@@ -75,7 +86,12 @@ public class MainFrame extends JFrame{
             String getNumber = rfNumber.getText().toLowerCase();
             String[] Fortunes = {getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.", 
             getName + " do not wear " + getColor + " for  " + getNumber + " days or you will step in dog poop.", 
-            getName + " change your hair to " + getColor + " in  " + getNumber + " days to have luck with your finances."};
+            getName + " change your hair to " + getColor + " in " + getNumber + " days to have luck with your finances.",
+            getName + " you are boring so no horoscope for you.", 
+            getName + ", " + getNumber + " is not as lucky as the number 1111. " + "Play the Lotto in using 1111 and take a lucky charm that has " + getColor + " somewhere in it with you.", 
+            getName + " you will be hungry in " + getNumber + " minutes. You should eat something " + getColor + ".",
+            getName + " dress as a Sailormoon character that wears " + getColor + " for your " + getNumber + "th event this year for fame.", 
+            getName + " wear " + getColor + " and run for  " + getNumber + " minutes. Then, ask yourself could you pass the hunter exam with Gon and Killua. If not, do it again."};
             Random rand = new Random();
             int r = rand.nextInt(Fortunes.length);
             mbFortune.setText(Fortunes[r]);
@@ -119,6 +135,7 @@ public class MainFrame extends JFrame{
         mainPanel.setBackground(new Color(100, 125, 255));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 50, 20));
         mainPanel.add(formPanel, BorderLayout.NORTH);
+        // mainPanel.add(mbDirections, BorderLayout.NORTH);
         mainPanel.add(mbFortune, BorderLayout.CENTER);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
