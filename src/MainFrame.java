@@ -3,10 +3,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class MainFrame extends JFrame{
-    final private Font mainFont =  new Font("Arial", Font.BOLD, 20);
+    final private Font mainFont =  new Font("Arial", Font.BOLD, 16);
     final private Font nextFont =  new Font("Arial", Font.PLAIN, 16);
     final private Font lastFont =  new Font("Arial", Font.BOLD, 16);
 
@@ -25,16 +27,25 @@ public class MainFrame extends JFrame{
 
     public void initialize () {
         /**********Form Panel*******/
-        JLabel mbDirections = new JLabel("Enter the your information the fields below for a horoscope.");
-        mbDirections.setFont(mainFont);
-        mbDirections.setVerticalTextPosition(JLabel.TOP);
-        JLabel blank1 = new JLabel();
-        // JLabel blank2 = new JLabel();
+        ImageIcon img = new ImageIcon("fortune.png");
+        // resize image
+        Image i = img.getImage();
+        Image new_img = i.getScaledInstance(60, 60,Image.SCALE_SMOOTH);
+        img = new ImageIcon(new_img);
 
+        // JLabel mbDirections = new JLabel("Enter the your information the fields below for a horoscope.");
+        // mbDirections.setFont(mainFont);
+        // mbDirections.setVerticalTextPosition(JLabel.TOP);
+        JLabel mbLogo = new JLabel("Enter the your information the fields below for a horoscope.", img, JLabel.CENTER);
+        mbLogo.setFont(mainFont);
+        // mbLogo.setHorizontalTextPosition(JLabel.CENTER);
+        // mbDirections.setIcon(pimage);
+        JLabel blank1 = new JLabel();
+        JLabel mbFortune;
+        // JLabel blank2 = new JLabel();
 
         JLabel mbFirstName = new JLabel("First Name:");
         mbFirstName.setFont(mainFont);
-        JLabel mbFortune;
 
         rfFirstName = new JTextField();
         rfFirstName.setFont(nextFont);
@@ -58,9 +69,10 @@ public class MainFrame extends JFrame{
 
 
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(6 , 1, 5, 5));
+        formPanel.setLayout(new GridLayout(5 , 1, 5, 5));
         formPanel.setOpaque(false);
-        formPanel.add(mbDirections);
+        formPanel.add(mbLogo);
+        // formPanel.add(mbDirections);
         formPanel.add(blank1);
         formPanel.add(mbFirstName);
         formPanel.add(rfFirstName);
@@ -136,6 +148,7 @@ public class MainFrame extends JFrame{
         mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 50, 20));
         mainPanel.add(formPanel, BorderLayout.NORTH);
         // mainPanel.add(mbDirections, BorderLayout.NORTH);
+        // mainPanel.add(mbLogo, BorderLayout.NORTH);
         mainPanel.add(mbFortune, BorderLayout.CENTER);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
