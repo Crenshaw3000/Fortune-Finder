@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 public class MainFrame extends JFrame{
@@ -27,16 +28,16 @@ public class MainFrame extends JFrame{
 
     public void initialize () {
         /**********Form Panel*******/
-        ImageIcon img = new ImageIcon("fortune.png");
+        ImageIcon img = new ImageIcon("fortune3.png");
         // resize image
         Image i = img.getImage();
-        Image new_img = i.getScaledInstance(60, 60,Image.SCALE_SMOOTH);
+        Image new_img = i.getScaledInstance(50, 50,Image.SCALE_SMOOTH);
         img = new ImageIcon(new_img);
 
         // JLabel mbDirections = new JLabel("Enter the your information the fields below for a horoscope.");
         // mbDirections.setFont(mainFont);
         // mbDirections.setVerticalTextPosition(JLabel.TOP);
-        JLabel mbLogo = new JLabel("Enter the your information the fields below for a horoscope.", img, JLabel.CENTER);
+        JLabel mbLogo = new JLabel("Enter the your information for a horoscope.", img, JLabel.CENTER);
         mbLogo.setFont(mainFont);
         // mbLogo.setHorizontalTextPosition(JLabel.CENTER);
         // mbDirections.setIcon(pimage);
@@ -106,7 +107,7 @@ public class MainFrame extends JFrame{
             getName + " wear " + getColor + " and run for  " + getNumber + " minutes. Then, ask yourself could you pass the hunter exam with Gon and Killua. If not, do it again."};
             Random rand = new Random();
             int r = rand.nextInt(Fortunes.length);
-            mbFortune.setText(Fortunes[r]);
+            mbFortune.setText(Fortunes[r], SwingConstants.CENTER);
 
             // mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
             // mbFortune.setHorizontalTextPosition(JLabel.CENTER);
@@ -145,7 +146,7 @@ public class MainFrame extends JFrame{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(100, 125, 255));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 20, 50, 20));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 50, 20));
         mainPanel.add(formPanel, BorderLayout.NORTH);
         // mainPanel.add(mbDirections, BorderLayout.NORTH);
         // mainPanel.add(mbLogo, BorderLayout.NORTH);
@@ -156,8 +157,8 @@ public class MainFrame extends JFrame{
 
 
         setTitle("Fortune Finder");
-        setSize(500, 600);
-        setMinimumSize(new Dimension(300,400));
+        setSize(850, 600);
+        setMinimumSize(new Dimension(850,600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
