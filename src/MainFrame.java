@@ -10,6 +10,7 @@ import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,10 +35,7 @@ public class MainFrame extends JFrame{
         Image new_img = i.getScaledInstance(50, 50,Image.SCALE_SMOOTH);
         img = new ImageIcon(new_img);
 
-        // JLabel mbDirections = new JLabel("Enter the your information the fields below for a horoscope.");
-        // mbDirections.setFont(mainFont);
-        // mbDirections.setVerticalTextPosition(JLabel.TOP);
-        JLabel mbLogo = new JLabel("Enter the your information for a horoscope.", img, JLabel.CENTER);
+        JLabel mbLogo = new JLabel("Enter the your information for a horoscope.", img, SwingConstants.CENTER);
         mbLogo.setFont(mainFont);
         // mbLogo.setHorizontalTextPosition(JLabel.CENTER);
         // mbDirections.setIcon(pimage);
@@ -70,10 +68,11 @@ public class MainFrame extends JFrame{
 
 
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(5 , 1, 5, 5));
+        formPanel.setLayout(new GridLayout(5 , 2, 20, 20));
+        // formPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+        // formPanel.setBounds(100, 100, 50, 50);
         formPanel.setOpaque(false);
         formPanel.add(mbLogo);
-        // formPanel.add(mbDirections);
         formPanel.add(blank1);
         formPanel.add(mbFirstName);
         formPanel.add(rfFirstName);
@@ -107,11 +106,7 @@ public class MainFrame extends JFrame{
             getName + " wear " + getColor + " and run for  " + getNumber + " minutes. Then, ask yourself could you pass the hunter exam with Gon and Killua. If not, do it again."};
             Random rand = new Random();
             int r = rand.nextInt(Fortunes.length);
-            mbFortune.setText(Fortunes[r], SwingConstants.CENTER);
-
-            // mbFortune.setText(getName + " you look good in " + getColor + " and you will be happy in " + getNumber + " days.");
-            // mbFortune.setHorizontalTextPosition(JLabel.CENTER);
-            // mbFortune.setBounds(50,50,50,50);
+            mbFortune.setText(Fortunes[r]);
 
         });
         
@@ -146,9 +141,8 @@ public class MainFrame extends JFrame{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(100, 125, 255));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 50, 20));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(50, 25, 50, 25));
         mainPanel.add(formPanel, BorderLayout.NORTH);
-        // mainPanel.add(mbDirections, BorderLayout.NORTH);
         // mainPanel.add(mbLogo, BorderLayout.NORTH);
         mainPanel.add(mbFortune, BorderLayout.CENTER);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
